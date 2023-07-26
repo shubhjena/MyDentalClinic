@@ -1,28 +1,53 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
+import Masonry from '@mui/lab/Masonry';
+import { Breadcrumbs } from '@mui/material';
 import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import { Link } from 'react-router-dom';
 
 export default function TitlebarBelowMasonryImageList() {
   return (
-    <Box sx={{ width:'full'}} className='p-10'>
-    <Toolbar />
-    <h2 className='text-3xl pb-5 font-serif'>Gallery</h2>
-      <ImageList variant="masonry" cols={3} gap={8}>
-        {itemData.map((item) => (
-          <ImageListItem key={item.img}>
+    <Box sx={{ width:'full'}} className='px-10 py-5'>
+      <Toolbar className="flex flex-col pb-5">
+        <h2 className='text-3xl font-serif mr-auto'>Gallery</h2>
+        <div className=" mr-auto">
+          <Breadcrumbs aria-label="breadcrumb" >
+            <Link to=''>
+              Home
+            </Link>
+            <Link to=''>
+              Catalog
+            </Link>
+            <Link to=''>
+              Accessories
+            </Link>
+            <Link to=''>
+              New Collection
+            </Link>
+            <Typography color="text.primary">Belts</Typography>
+          </Breadcrumbs>
+        </div>
+      </Toolbar>
+      <Masonry columns={{ xs: 2, sm: 3, md: 4 }} spacing={2}>
+        {itemData.map((item, index) => (
+          <div key={index}>
+            <div>{item.title}</div>
             <img
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              src={`${item.img}?w=162&auto=format`}
+              srcSet={`${item.img}?w=162&auto=format&dpr=2 2x`}
               alt={item.title}
               loading="lazy"
+              style={{
+                borderBottomLeftRadius: 4,
+                borderBottomRightRadius: 4,
+                display: 'block',
+                width: '100%',
+              }}
             />
-            <ImageListItemBar position="below" title={item.author} />
-          </ImageListItem>
+          </div>
         ))}
-      </ImageList>
+      </Masonry>
     </Box>
   );
 }

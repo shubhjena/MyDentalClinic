@@ -6,7 +6,7 @@ function RootLayout() {
   return (
     <div>
         <Nav/>
-        <main>
+        <main className='mt-16'>
             <Outlet/>
         </main>
         <Footer/>

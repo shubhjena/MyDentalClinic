@@ -60,9 +60,9 @@ function AboutUs() {
             </ListItem>
           </List>
         </div>
-        <Box className="px-5 w-4/5 ">
+        <div className="px-5 w-4/5 ">
           <div id='about-us' className="px-5 mx-5">
-            <h3 className="text-3xl ">ABC Dental Clinic</h3>
+            <h3 className="text-3xl ">My Dental Clinic</h3>
             <div className="md:flex gap-5">
               <p className="text-justify my-auto">
                 Deserunt sunt laborum laboris tempor enim nulla id excepteur
@@ -82,7 +82,7 @@ function AboutUs() {
             </div>
           </div>
           <div id='technology' className="p-5 m-5">
-            <h3 className=" text-2xl ">Technology at ABC</h3>
+            <h3 className=" text-2xl ">Technology</h3>
             <ImageList sx={{ width: "fill", height: 450 }}>
               <ImageListItem key="Subheader" cols={3}>
                 <ListSubheader component="div">
@@ -151,7 +151,7 @@ function AboutUs() {
               </div>
             </div>
           </div>
-        </Box>
+        </div>
       </div>
     </div>
   );

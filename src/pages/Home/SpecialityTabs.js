@@ -3,9 +3,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import TabContext from "@mui/lab/TabContext";
-import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import { treatments } from "../Treatments/TreatmentList";
+import { treatments } from "../../lib/TreatmentList";
 
 
 export default function ScrollableTabsButtonForce() {
@@ -39,8 +38,13 @@ export default function ScrollableTabsButtonForce() {
         </Box>
         {treatments.map((treatment, index) => (
           <TabPanel key={treatment.name} value={`${index}`}>
-            <span className="block italic text-lg font-thin my-1">{treatment.intro}</span>
-            {treatment.description}
+            <div className="flex flex-wrap md:flex-nowrap gap-5 justify-center">
+              <p>
+                <span className="block italic text-lg font-thin my-1">{treatment.intro}</span>
+                <span>{treatment.detailedDescription}</span>
+              </p>
+                <img src={treatment.image} className="object-contain h-48" ></img>
+            </div>
           </TabPanel>
         ))}
       </TabContext>

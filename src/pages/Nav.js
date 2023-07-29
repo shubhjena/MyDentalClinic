@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -17,6 +16,7 @@ import Button from "@mui/material/Button";
 import Slide from "@mui/material/Slide";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Link } from "react-router-dom";
+import { NAME } from "../lib/userInfo";
 
 const drawerWidth = 240;
 const navItems = [
@@ -24,7 +24,7 @@ const navItems = [
   { title: "About Us", path: "about" },
   { title: "Treatments", path: "treatments" },
   { title: "Gallery", path: "gallery" },
-  { title: "Contact", path: "/" },
+  { title: "Contact", path: "contact" },
 ];
 
 function DrawerAppBar(props) {
@@ -34,23 +34,22 @@ function DrawerAppBar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  const logo = `ABC DENTAL CLINIC`;
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ m: 2 }}>
-        <span className="text-xl font-extrabold font-sans">{logo}</span>
+        <Link to='/'><span className="text-xl font-extrabold font-sans">{NAME}</span></Link>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <Link to={item.path}>
-            <ListItem key={item.title} disablePadding>
+          <ListItem key={item.title} disablePadding className="hover:underline">
+            <Link to={item.path}>
               <ListItemButton sx={{ textAlign: "left" }}>
                 <ListItemText primary={item.title} />
               </ListItemButton>
-            </ListItem>
-          </Link>
+            </Link>
+          </ListItem>
         ))}
       </List>
     </Box>
@@ -86,19 +85,26 @@ function DrawerAppBar(props) {
               sx={{ mr: 2, display: { sm: "none" } }}
             >
               <MenuIcon />
-            </IconButton>
+            </IconButton> 
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "block", sm: "none" } }}
+            >
+              <Link to='/'><span className="font-sans text-2xl font-extrabold">{NAME}</span></Link>
+            </Typography>
             <Typography
               variant="h6"
               component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
-              <span className="text-2xl font-extrabold font-sans">{logo}</span>
+              <Link to='/'><span className="font-sans text-4xl font-extrabold">{NAME}</span></Link>
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "flex" } }} className="gap-0 md:gap-2 lg:gap-10 flex-wrap">
               {navItems.map((item) => (
-                <Link to={item.path}>
+                <Link to={item.path} key={item.title}>
                   <Button key={item.title} sx={{ color: "#fff" }}>
-                    {item.title}
+                    <span className="hover:underline normal-case text-lg font-normal">{item.title}</span>
                   </Button>
                 </Link>
               ))}

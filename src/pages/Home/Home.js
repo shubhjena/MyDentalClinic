@@ -3,12 +3,11 @@ import Button from "@mui/material/Button";
 import EastIcon from "@mui/icons-material/East";
 import { Link } from "react-router-dom";
 import Testimonials from "./Testimonials";
-import { clinicStats } from "../../lib/userInfo";
+import { NAME, WHATSAPP_ID, clinicStats } from "../../lib/userInfo";
 
 
 function Home() {
-  const phone = "123-456-7890";
-  const text = "Hi, I would like to book an appointment with the dentist!";
+
   const divStyle = {
     backgroundImage: 'url("/images/Hero.jpg")',
     backgroundRepeat: "no-repeat",
@@ -29,7 +28,7 @@ function Home() {
             Where Dental Care Shines Bright!
           </h2>
           <a
-            href={`https://api.whatsapp.com/send?phone=91${phone}&text=${text}`}
+            href={WHATSAPP_ID}
             target="blank"
             className="mx-auto pt-3"
           >
@@ -41,7 +40,7 @@ function Home() {
       </div>
       {/* Clinic Stats Section */}
       <div className="text-center p-5">
-        <h2 className="font-bold text-4xl">Welcome to My Dental Clinic</h2>
+        <h2 className="font-bold text-4xl">Welcome to {NAME}</h2>
         <h3 className="font-extralight p-2 text-xl">
           a dental clinic based out of Rewadi, Haryana
         </h3>
@@ -61,8 +60,8 @@ function Home() {
       </div>
 
       {/* Our Expertise Section */}
-      <div className="bg-fuchsia-200 flex justify-center p-5">
-        <div className="w-4/6 text-center">
+      <div id='our-expertise' className="bg-fuchsia-200 flex justify-center p-5">
+        <div className="w-full sm:w-4/6 text-center">
           <h2 className="text-3xl font-semibold pb-2">Our Expertise</h2>
           <SpecialityTabs />
         </div>
@@ -74,9 +73,14 @@ function Home() {
           <h2 className="text-3xl font-semibold pb-2">
             The Importance of Dental Hygiene and Regular Dental Check-ups
           </h2>
-          <div className="md:flex gap-5 max-w-6xl">
+          <div className="flex flex-wrap md:flex-nowrap gap-5 max-w-6xl">
             <div>
-              <p className="text-justify my-auto pb-2">
+              <div className="float-right mb-2 ml-2">
+                <div className="sm:w-96">
+                  <img src="./images/article/Dental-Hygiene.jpg" className=" "/>
+                </div>
+              </div>
+              <p className="text-justify my-auto pb-2 font-light text-lg  tracking-wider">
                 Maintaining good dental hygiene and attending regular dental
                 check-ups are essential practices for ensuring overall health and
                 well-being. Beyond achieving a bright smile, these habits play a
@@ -96,22 +100,18 @@ function Home() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="article">
-                  <Button variant="contained" endIcon={<EastIcon />}>
+                  <Button size='large' variant="contained" endIcon={<EastIcon />}>
                     Know More
                   </Button>
                 </Link>
                 <a
-                  href={`https://api.whatsapp.com/send?phone=91${phone}&text=${text}`}
+                  href={WHATSAPP_ID}
                   target="blank"
                 >
-                  <Button variant="contained">Consult Now</Button>
+                  <Button size='large' variant="contained">Consult Now</Button>
                 </a>
               </div>
             </div>
-            <img
-              src="https://source.unsplash.com/random/250x250/?clinic"
-              className="mx-auto"
-            />
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ import Home from "./pages/Home/Home";
 import Gallery from "./pages/Gallery";
 import AboutUs from "./pages/AboutUs";
 import RootLayout from "./layouts/RootLayout";
-import Treatments from "./pages/Treatments/Treatments";
+import Treatments from "./pages/Treatments";
 import Contacts from "./pages/Contacts";
 import DentalHygiene from "./pages/Home/DentalHygiene";
 

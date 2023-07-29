@@ -1,47 +1,48 @@
-import React from "react";
 import Button from "@mui/material/Button";
 import DirectionsIcon from "@mui/icons-material/Directions";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import { ReportGmailerrorred } from "@mui/icons-material";
+import Typography from "@mui/material/Typography";
+import { Breadcrumbs } from '@mui/material';
+import Toolbar from "@mui/material/Toolbar";
+import { Link } from 'react-router-dom';
+import { PHONE, EMAIL, TEXT_MSG,ADDRESS, GOOGLE_MAPS_DIRECTION, NAME } from "../lib/userInfo";
+
 
 function Contacts() {
-  const email = "my.info@gmail.com";
-  const phone = "123-456-7890";
-  const text = "Hi, I would like to book an appointment with the dentist!";
-
-  const handleButtonClick = () => {
-    const latitude = 28.612912; // Replace with the latitude of your desired location
-    const longitude = 77.2253895; // Replace with the longitude of your desired location
-    const mapUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
-
-    window.open(mapUrl, "_blank");
-  };
 
   return (
     <div className="flex flex-col p-5">
+      <Toolbar className="flex flex-col pb-5">
+        <h2 className="text-3xl font-serif mr-auto">Contact</h2>
+        <div className=" mr-auto">
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link to="/">Home</Link>
+            <Typography color="text.primary">Contact</Typography>
+          </Breadcrumbs>
+        </div>
+      </Toolbar>
       <div className="flex flex-wrap gap-5 justify-center">
         <Button
           style={{ textTransform: "none" }}
-          onClick={`mailto:${email}`}
           variant="contained"
           size="large"
           className=""
-        >
+        ><a href={`mailto:${EMAIL}`}>
           <EmailIcon />
-          &nbsp;{email}
+          &nbsp;{EMAIL}</a>
         </Button>
         <a
-          href={`https://api.whatsapp.com/send?phone=91${phone}&text=${text}`}
+          href={`https://api.whatsapp.com/send?phone=91${PHONE}&text=${TEXT_MSG}`}
           target="blank"
         >
           <Button variant="contained" size="large">
             <WhatsAppIcon />
-            &nbsp;{phone}
+            &nbsp;{PHONE}
           </Button>
         </a>
-        <Button onClick={handleButtonClick} variant="contained" size="large">
+        <Button onClick={GOOGLE_MAPS_DIRECTION} variant="contained" size="large">
           <DirectionsIcon />
           &nbsp;Directions
         </Button>
@@ -50,14 +51,18 @@ function Contacts() {
       <div className="flex flex-wrap gap-10 justify-center font-sans">
         <div>
             <h2 className='text-xl font-bold'>Contact Address</h2>
-            <h2 className='text-lg font-semibold font-sans'>My Dental Clinic</h2>
-            <p>Shop No. 7, Sector 3,<br/>Part-II HUDA Complex,<br/> Haryana - 123401</p>
+            <h2 className='text-lg font-semibold font-sans'>{NAME}</h2>
+            <div>
+              {Object.values(ADDRESS).map((line, index) => (
+                <p key={index}>{line}</p>
+              ))}
+            </div>
         </div>
         <div>
             <h4 className='font-semibold'>Reach us at:</h4>
-            <p><EmailIcon/>&nbsp;{email}</p>
-            <p><PhoneIcon/>&nbsp;{phone}</p>
-            <Button style={{ marginTop: "12px", padding:"5px 30px" }} onClick={handleButtonClick} variant="contained" color="success">
+            <p><EmailIcon/>&nbsp;{EMAIL}</p>
+            <p><PhoneIcon/>&nbsp;{PHONE}</p>
+            <Button style={{ marginTop: "12px", padding:"5px 30px" }} onClick={GOOGLE_MAPS_DIRECTION} variant="contained" color="success">
                 <DirectionsIcon />&nbsp;Directions
             </Button>
         </div>

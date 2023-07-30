@@ -117,7 +117,7 @@ function Home() {
       </div>
 
       {/* Testimonials Section */}
-      <div className="flex justify-center py-5">
+      <div className="justify-center py-5 hidden md:flex">
         <Testimonials />
       </div>
     </div>

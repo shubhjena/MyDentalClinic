@@ -44,4 +44,4 @@ This project is licensed under the [MIT License](https://opensource.org/license/
 
 If you have any questions or need further assistance, feel free to contact me at [shubh.jena@gmail.com](mailto:shubh.jena@gmail.com).
 
-Thank you for using the Expense Tracker App!
+Thank you for visiting My Dental Clinic!
